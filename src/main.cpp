@@ -89,8 +89,8 @@ private:
         );
 
         _adv_data_builder.setFlags();
-        /*UUID *h[2]={&_thermometer_uuid,&_user_uuid};*/
-        _adv_data_builder.setLocalServiceList(mbed::make_Span(&_thermometer_uuid, 1));
+        UUID h[2]={_thermometer_uuid,_user_uuid};
+        //_adv_data_builder.setLocalServiceList(mbed::make_Span(h, 2));
         _adv_data_builder.setAppearance(ble::adv_data_appearance_t::THERMOMETER_EAR);
         _adv_data_builder.setName(DEVICE_NAME);
 
