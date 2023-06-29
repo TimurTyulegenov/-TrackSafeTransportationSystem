@@ -62,6 +62,8 @@ public:
         _event_queue.call_every(500, this, &Track::blink);
 
         _event_queue.dispatch_forever();
+
+        printf("BLE START. \n");
     }
 
 private:
@@ -185,6 +187,7 @@ void schedule_ble_events(BLE::OnEventsToProcessCallbackContext *context) {
 
 int main()
 {
+    printf("Start program. \n");
     BLE &ble = BLE::Instance();
     ble.onEventsToProcess(schedule_ble_events);
 
