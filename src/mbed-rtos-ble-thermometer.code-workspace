@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "mbed-rtos-ble-thermometer",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"platformio-ide.customPATH": "",
+		"files.associations": {
+			"thread": "cpp"
+		}
+	}
+}
