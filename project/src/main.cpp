@@ -142,7 +142,7 @@ private:
 /** Schedule processing of events from the BLE middleware in the event queue. */
 void schedule_ble_events(BLE::OnEventsToProcessCallbackContext *context) {
     event_queue.call(Callback<void()>(&context->ble, &BLE::processEvents));
-}*/
+}
 int main()
 {
     BLE &ble = BLE::Instance();
