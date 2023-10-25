@@ -12,13 +12,13 @@ const static char DEVICE_NAME[] = "TensitionSensor"
 
 static events::EventQueue event_queue(/* event count */ 16 * EVENTS_EVENT_SIZE);
 
-class ThermometerDemo : ble::Gap::EventHandler {
+class Track: ble::Gap::EventHandler {
 public:
-    ThermometerDemo(BLE &ble, events::EventQueue &event_queue) :
+    Track(BLE &ble, events::EventQueue &event_queue) :
         _ble(ble),
         _event_queue(event_queue),
         _sensor_event_id(0),
-        _tensitionsens_uuid(GattService::UUID_HEALTH_tensitionr_service),
+        _tensitionsens_uuid(GattService::UUID_HEALTH_THERMOMETER_SERVICE),
         _current_tensition(0),
         _tensitionr_service(NULL),
         _adv_data_builder(_adv_buffer) { }
@@ -26,9 +26,9 @@ public:
     void start() {
         _ble.gap().setEventHandler(this);
 
-        _ble.init(this, &ThermometerDemo::on_init_complete);
+        _ble.init(this, &Track::on_init_complete);
 
-        _event_queue.call_every(1000, this, &ThermometerDemo::blink);
+        _event_queue.call_every(1000, this, &Track::blink);
 
         _event_queue.dispatch_forever();
     }
@@ -148,7 +148,7 @@ int main()
     BLE &ble = BLE::Instance();
     ble.onEventsToProcess(schedule_ble_events);
 
-    ThermometerDemo demo(ble, event_queue);
+    Track demo(ble, event_queue);
     demo.start();
 
     return 0;
