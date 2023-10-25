@@ -148,8 +148,8 @@ int main()
     BLE &ble = BLE::Instance();
     ble.onEventsToProcess(schedule_ble_events);
 
-    Track demo(ble, event_queue);
-    demo.start();
+    Track app(ble, event_queue);
+    app.start();
 
     return 0;
 }
